@@ -1,11 +1,9 @@
-import { usePathname } from 'next/navigation'
+export const isServer = !(typeof window !== 'undefined' && window.document)
 
 export const useDomainByUrl = () => {
-  const path = usePathname()
-  if (path) {
-    const domain = path.toString().split(/:\./)
-    // console.log(path, domain)
-    return domain ? domain[0] : '/'
+  if (!isServer) {
+    const domain: string = window.location.host.replace(/\..+/, '')
+    return domain || '/'
   }
-  return path
+  return '/'
 }
