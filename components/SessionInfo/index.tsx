@@ -5,7 +5,7 @@ import AuthForm from 'components/AuthForm'
 export default function SessionInfo() {
   const router = useRouter()
   const { data: user, data: session, status } = useSession()
-  console.log(status, session, user)
+  // console.log(status, session, user)
 
   if (status === 'loading') {
     return <h3>Loading...</h3>

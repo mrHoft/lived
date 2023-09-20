@@ -1,36 +1,12 @@
-import type { User } from 'next-auth'
-import { AuthOptions, CookiesOptions } from 'next-auth/core/types'
-import Credentials from 'next-auth/providers/credentials'
-// import { randomUUID, randomBytes } from 'crypto'
+import { AuthOptions } from 'next-auth/core/types'
+import CredentialsProvider from 'next-auth/providers/credentials'
 
-const cookies: Partial<CookiesOptions> = {
-  sessionToken: {
-    name: `next-auth.session-token`,
-    options: {
-      httpOnly: true,
-      sameSite: 'none',
-      path: '/',
-      domain: process.env.NEXTAUTH_URL,
-      secure: true,
-    },
-  },
-  callbackUrl: {
-    name: `next-auth.callback-url`,
-    options: {},
-  },
-  csrfToken: {
-    name: 'next-auth.csrf-token',
-    options: {},
-  },
-}
-
-export const config: AuthOptions = {
+export const authConfig: AuthOptions = {
   session: {
     strategy: 'jwt',
-    // generateSessionToken: () => randomUUID?.() ?? randomBytes(32).toString('hex'),
   },
   providers: [
-    Credentials({
+    CredentialsProvider({
       name: 'Credentials',
       type: 'credentials',
       credentials: {
@@ -68,15 +44,4 @@ export const config: AuthOptions = {
       },
     }),
   ],
-  callbacks: {
-    async signIn({ user, account, profile }) {
-      console.log('User signin start:', user)
-      return true
-    },
-  },
-  pages: {
-    // signIn: "/login",
-  },
-  secret: process.env.JWT_SECRET,
-  // cookies: cookies,
 }
