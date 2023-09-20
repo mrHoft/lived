@@ -1,7 +1,7 @@
 import type { User } from 'next-auth'
 import { AuthOptions, CookiesOptions } from 'next-auth/core/types'
 import Credentials from 'next-auth/providers/credentials'
-import { randomUUID, randomBytes } from 'crypto'
+// import { randomUUID, randomBytes } from 'crypto'
 
 const cookies: Partial<CookiesOptions> = {
   sessionToken: {
@@ -27,7 +27,7 @@ const cookies: Partial<CookiesOptions> = {
 export const config: AuthOptions = {
   session: {
     strategy: 'jwt',
-    generateSessionToken: () => randomUUID?.() ?? randomBytes(32).toString('hex'),
+    // generateSessionToken: () => randomUUID?.() ?? randomBytes(32).toString('hex'),
   },
   providers: [
     Credentials({
