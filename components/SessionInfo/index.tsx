@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut, getCsrfToken } from 'next-auth/react'
+import { useSession, signOut, getCsrfToken } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import AuthForm from 'components/AuthForm'
 
@@ -18,7 +18,7 @@ export default function SessionInfo() {
   return (
     <>
       <p>
-        Signed in as <strong>{session.user?.email}</strong>
+        Signed in: <strong>{session.user?.name}</strong> ({session.user?.email})
       </p>
       <p>{JSON.stringify(user, null, 2)}</p>
       <button onClick={() => signOut()}>Sign out</button>
