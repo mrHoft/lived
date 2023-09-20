@@ -7,6 +7,10 @@ export default function SessionInfo() {
   const { data: user, data: session, status } = useSession()
   console.log(status, session, user)
 
+  if (status === 'loading') {
+    return <h3>Loading...</h3>
+  }
+
   if (!session) {
     return <AuthForm />
   }
