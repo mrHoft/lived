@@ -1,4 +1,4 @@
-import styles from './footer.module.css'
+import styles from './.module.css'
 import { useState, useEffect } from 'react'
 
 const getRandomUrl = () =>

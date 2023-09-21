@@ -12,9 +12,14 @@ lerna-debug.log*
 
 .eslintcache
 
+.turbo
 *.tsbuildinfo
 next-env.d.ts
 
 .next
 .vercel
 .env*.local
+
+.auth
+.internal
+.public

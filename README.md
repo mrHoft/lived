@@ -2,9 +2,12 @@
 
 ### Стек
 
-- Next.js
-- NextAuth
-- Typescript
+- TypeScript
+- Monorepo: besed on turbo
+- Frameworks: Next.js, NextAuth.js
+- Package manager: pnpm
+- Linter: ESlint
+- Format: Prettier
 
 ## Задание:
 

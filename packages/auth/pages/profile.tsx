@@ -20,7 +20,7 @@ export default function SessionInfo() {
   return (
     <Layout>
       <h3>Привет, {session?.user?.name}</h3>
-      <button onClick={() => signOut()}>Sign out</button>
+      <button onClick={async () => await signOut()}>Sign out</button>
     </Layout>
   )
 }

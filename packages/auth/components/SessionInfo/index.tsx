@@ -21,7 +21,7 @@ export default function SessionInfo() {
         Signed in: <strong>{session.user?.name}</strong> ({session.user?.email})
       </p>
       <p>{JSON.stringify(user, null, 2)}</p>
-      <button onClick={() => signOut()}>Sign out</button>
+      <button onClick={async () => await signOut()}>Sign out</button>
     </>
   )
 }

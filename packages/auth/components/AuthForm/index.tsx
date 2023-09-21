@@ -11,7 +11,7 @@ export default function AuthForm() {
 
   // TODO: useEffect
 
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async e => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
     signIn('credentials', { ...userInfo, redirect: false }).then(res => {
       console.log(res)
@@ -37,7 +37,7 @@ export default function AuthForm() {
         <input type="submit" value="Login" />
       </form>
       <br />
-      <button onClick={() => signIn()}>Default sign form</button>
+      <button onClick={async () => await signIn()}>Default sign form</button>
     </div>
   )
 }

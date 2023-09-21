@@ -1,4 +1,4 @@
-import styles from './header.module.css'
+import styles from './.module.css'
 import { useDomainByUrl } from 'hooks/useDomain'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, RefObject } from 'react'
@@ -20,7 +20,7 @@ export default function Header() {
     'public-lived': useRef(null),
   }
   const router = useRouter()
-  const url = DOMAIN || router.basePath
+  const url = DOMAIN ?? router.basePath
   const sub = useDomainByUrl()
 
   useEffect(() => {
