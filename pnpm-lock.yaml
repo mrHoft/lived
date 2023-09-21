@@ -107,6 +107,28 @@ importers:
         specifier: 5.2.2
         version: 5.2.2
 
+  packages/public:
+    dependencies:
+      next:
+        specifier: 13.4.1
+        version: 13.4.1(react-dom@18.2.0)(react@18.2.0)
+      react:
+        specifier: latest
+        version: 18.2.0
+      react-dom:
+        specifier: latest
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@types/node':
+        specifier: latest
+        version: 20.6.3
+      '@types/react':
+        specifier: latest
+        version: 18.2.22
+      typescript:
+        specifier: 5.2.2
+        version: 5.2.2
+
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:

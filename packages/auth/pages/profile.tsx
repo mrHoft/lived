@@ -10,10 +10,7 @@ export default function SessionInfo() {
 
   useEffect(() => {
     if (status !== 'loading' && !session) {
-      router.push({
-        pathname: '/',
-        // query: { returnUrl: router.asPath },
-      })
+      router.replace('/')
     }
   }, [session])
 

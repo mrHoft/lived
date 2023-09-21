@@ -1,9 +1,7 @@
 import { useSession, signOut, getCsrfToken } from 'next-auth/react'
-import { useRouter } from 'next/router'
 import AuthForm from 'components/AuthForm'
 
 export default function SessionInfo() {
-  const router = useRouter()
   const { data: user, data: session, status } = useSession()
   // console.log(status, session, user)
 

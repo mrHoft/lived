@@ -1,17 +1,19 @@
 {
-  "name": "root",
+  "name": "lived-public",
   "version": "0.0.0",
   "private": true,
   "repository": "",
   "scripts": {
-    "build:app": "turbo run build",
-    "build": "turbo run build --filter=next-auth --no-deps",
+    "build": "turbo run build",
+    "build:auth": "turbo run build --filter=lived-auth",
+    "build:internal": "turbo run build --filter=lived-internal",
+    "build:public": "turbo run build --filter=lived-public",
+    "dev:auth": "turbo run dev --filter=lived-auth",
+    "dev:internal": "turbo run dev --filter=lived-internal",
+    "dev:public": "turbo run dev --filter=lived-public",
     "clean": "turbo run clean --no-cache",
-    "dev": "turbo run dev",
-    "dev:auth": "turbo run dev --filter='./packages/auth'",
-    "dev-v4": "turbo run dev --filter=next-auth-app-v4",
-    "lint": "eslint --cache .",
-    "format": "prettier --write .",
+    "lint": "turbo run lint",
+    "format": "turbo run prettier",
     "release": "release"
   },
   "devDependencies": {

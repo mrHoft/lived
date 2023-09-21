@@ -1,10 +1,8 @@
 import { useSession, signOut } from 'next-auth/react'
 import Layout from 'components/layout'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 export default function SessionInfo() {
-  const router = useRouter()
   const { data: user, data: session, status } = useSession()
   console.log(status, session, user)
 
