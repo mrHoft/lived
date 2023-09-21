@@ -12,7 +12,7 @@ export default function SessionInfo() {
     if (status !== 'loading' && !session) {
       router.push({
         pathname: '/',
-        query: { returnUrl: router.asPath },
+        // query: { returnUrl: router.asPath },
       })
     }
   }, [session])

@@ -24,7 +24,13 @@ export default function Footer() {
             <a href="/home">home</a>
           </li>
           <li>
-            <a href="/profile">profile</a>
+            <a href="/public">public</a>
+          </li>
+          <li>
+            <a href="/public-only">public-only</a>
+          </li>
+          <li>
+            <a href="/internal-only">internal-only</a>
           </li>
           <li>
             <a href={random}>random</a>
