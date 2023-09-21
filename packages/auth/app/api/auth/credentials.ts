@@ -1,6 +1,8 @@
 import { AuthOptions } from 'next-auth/core/types'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+const useSecureCookies = !!process.env.VERCEL_URL
+
 export const authConfig: AuthOptions = {
   session: {
     strategy: 'jwt',
@@ -46,5 +48,18 @@ export const authConfig: AuthOptions = {
     }),
   ],
 
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET as string,
+
+  cookies: {
+    sessionToken: {
+      name: `${useSecureCookies ? '__Secure-' : ''}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        domain: '.vercel.app',
+        secure: useSecureCookies,
+      },
+    },
+  },
 }

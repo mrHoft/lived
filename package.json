@@ -1,20 +1,17 @@
 {
-  "name": "lived-public",
+  "name": "lived-monorepo",
   "version": "0.0.0",
   "private": true,
-  "repository": "",
+  "repository": "https://github.com/mrHoft/lived",
+  "author": "mrHoft <https://github.com/mrHoft>",
   "scripts": {
     "build": "turbo run build",
-    "build:auth": "turbo run build --filter=lived-auth",
-    "build:internal": "turbo run build --filter=lived-internal",
-    "build:public": "turbo run build --filter=lived-public",
     "dev:auth": "turbo run dev --filter=lived-auth",
     "dev:internal": "turbo run dev --filter=lived-internal",
     "dev:public": "turbo run dev --filter=lived-public",
     "clean": "turbo run clean --no-cache",
     "lint": "turbo run lint",
-    "format": "turbo run prettier",
-    "release": "release"
+    "format": "turbo run prettier"
   },
   "devDependencies": {
     "@types/node": "^17.0.25",
