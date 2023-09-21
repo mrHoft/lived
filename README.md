@@ -1,6 +1,6 @@
 # Прожито Development App
 
-### Стек
+### Стек:
 
 - TypeScript
 - Monorepo: besed on turbo
