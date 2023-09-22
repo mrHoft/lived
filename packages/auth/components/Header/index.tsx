@@ -1,9 +1,8 @@
 import styles from './.module.css'
 import { useDomainByUrl } from 'hooks/useDomain'
-import { useRouter } from 'next/router'
 import { useEffect, useRef, RefObject } from 'react'
 
-const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN
+const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN ?? 'vercel.app'
 
 type TRefAnchors<T> = {
   'auth-lived': RefObject<T>
@@ -19,8 +18,6 @@ export default function Header() {
     'internal-lived': useRef(null),
     'public-lived': useRef(null),
   }
-  const router = useRouter()
-  const url = DOMAIN ?? router.basePath
   const sub = useDomainByUrl()
 
   useEffect(() => {
@@ -33,17 +30,17 @@ export default function Header() {
       <nav>
         <ul>
           <li>
-            <a href={`https://auth-lived.${url}`} ref={ref['auth-lived']}>
+            <a href={`https://auth-lived.${DOMAIN}`} ref={ref['auth-lived']}>
               auth
             </a>
           </li>
           <li>
-            <a href={`https://internal-lived.${url}`} ref={ref['internal-lived']}>
+            <a href={`https://internal-lived.${DOMAIN}`} ref={ref['internal-lived']}>
               internal
             </a>
           </li>
           <li>
-            <a href={`https://public-lived.${url}`} ref={ref['public-lived']}>
+            <a href={`https://public-lived.${DOMAIN}`} ref={ref['public-lived']}>
               public
             </a>
           </li>
