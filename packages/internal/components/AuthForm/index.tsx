@@ -13,13 +13,10 @@ export default function AuthForm() {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
-    signIn('credentials', { ...userInfo, redirect: false }).then(res => {
+    signIn('credentials', { ...userInfo, redirect: true }).then(res => {
       console.log(res)
       if (res && res.ok) {
-        const returnUrl = router.query.returnUrl
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-
-        router.replace(redirectURL as string)
+        // Leaved place for success actions
       } else {
         console.log('Email or Password is invalid')
       }

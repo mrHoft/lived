@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "cookie": "^0.5.0",
+    "copy-webpack-plugin": "^11.0.0",
     "next": "13.4.1",
     "next-auth": "4.22.1",
     "react": "latest",
@@ -46,7 +47,9 @@
   ],
   "eslintConfig": {
     "parserOptions": {
-      "project": ["./tsconfig.json"]
+      "project": [
+        "./tsconfig.json"
+      ]
     },
     "env": {
       "browser": true,
@@ -85,7 +88,7 @@
           "react/prop-types": "off",
           "react/no-unescaped-entities": "off",
           "@typescript-eslint/no-unused-vars": "off",
-          "@typescript-eslint/no-floating-promises":"off",
+          "@typescript-eslint/no-floating-promises": "off",
           "@typescript-eslint/no-misused-promises": "off",
           "@typescript-eslint/prefer-optional-chain": "off",
           "@typescript-eslint/consistent-type-definitions": "off"

@@ -1,9 +1,12 @@
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  webpack(config) {
+  webpack(config, { isServer }) {
     config.experiments = { ...config.experiments, topLevelAwait: true }
+    config.devServer.open = true
+
     return config
   },
+
   experimental: { appDir: true },
   typescript: { ignoreBuildErrors: true },
 
@@ -40,6 +43,6 @@ module.exports = phase => {
     NEXT_DEVELOPMENT_MODE: isDev ? '1' : '0',
     NEXT_AUTH_SECURE: '1', //isProd ? '1' : '0',
   }
-  // next.config.js object
+
   return { env }
 }
