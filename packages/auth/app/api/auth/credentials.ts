@@ -44,6 +44,8 @@ export const authConfig: AuthOptions = {
     }),
   ],
 
+  /* TODO: cookiesOptions must be configurated for NexAuth purpoces
   secret: SECURE ? (process.env.NEXTAUTH_SECRET as string) : undefined,
   cookies: cookiesOptions,
+*/
 }
