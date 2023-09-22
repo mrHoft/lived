@@ -4,8 +4,11 @@ import cookiesOptions from './cookies'
 import { getUser } from '../user/getUser'
 
 const SECURE = process.env.NEXT_AUTH_SECURE === '1'
+
+/* TODO: cookiesOptions must be configurated for NexAuth purpoces
 console.log('secure:', SECURE)
 console.log(cookiesOptions)
+*/
 
 export const authConfig: AuthOptions = {
   session: {

@@ -35,7 +35,7 @@ module.exports = phase => {
   const env = {
     NEXT_PUBLIC_DOMAIN: (() => {
       if (isDev) return 'test.com'
-      if (isProd) return pprocess.env.VERCEL_URL
+      if (isProd) return process.env.VERCEL_URL
     })(),
     NEXT_AUTH_SECURE: '1', //isProd ? '1' : '0',
   }
