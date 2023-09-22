@@ -29,18 +29,6 @@ export const authConfig: AuthOptions = {
         if (email !== 'john@email.com' || password !== '1234') {
           throw new Error('Invalid credentials')
         }
-        /* 
-        const user = await new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve({
-              id: "1",
-              name: "John Doe",
-              email: "john@email.com",
-              role: "admin",
-            });
-          }, 1000);
-        });
- */
         const user = { id: '1', name: 'John Doe', email: 'john@email.com', role: 'admin' }
 
         return user
@@ -57,7 +45,7 @@ export const authConfig: AuthOptions = {
         httpOnly: true,
         sameSite: 'lax',
         path: '/',
-        domain: '.vercel.app',
+        domain: process.env.VERCEL_URL as string,
         secure: useSecureCookies,
       },
     },

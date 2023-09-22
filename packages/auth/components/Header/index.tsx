@@ -3,7 +3,7 @@ import { useDomainByUrl } from 'hooks/useDomain'
 import { useRouter } from 'next/router'
 import { useEffect, useRef, RefObject } from 'react'
 
-const DOMAIN = process.env.DOMAIN
+const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN
 
 type TRefAnchors<T> = {
   'auth-lived': RefObject<T>

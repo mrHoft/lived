@@ -1,7 +1,11 @@
 import { AuthOptions } from 'next-auth/core/types'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import cookiesOptions from './cookies'
+import { getUser } from '../user/getUser'
 
-const useSecureCookies = !!process.env.VERCEL_URL
+const SECURE = process.env.NEXT_AUTH_SECURE === '1'
+console.log('secure:', SECURE)
+console.log(cookiesOptions)
 
 export const authConfig: AuthOptions = {
   session: {
@@ -26,40 +30,17 @@ export const authConfig: AuthOptions = {
           throw new Error('Fields can not be blank')
         }
 
-        if (email !== 'john@email.com' || password !== '1234') {
+        const user = await getUser()
+
+        if (email !== user.email || password !== '1234') {
           throw new Error('Invalid credentials')
         }
-        /* 
-        const user = await new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve({
-              id: "1",
-              name: "John Doe",
-              email: "john@email.com",
-              role: "admin",
-            });
-          }, 1000);
-        });
- */
-        const user = { id: '1', name: 'John Doe', email: 'john@email.com', role: 'admin' }
 
         return user
       },
     }),
   ],
 
-  secret: process.env.NEXTAUTH_SECRET as string,
-
-  cookies: {
-    sessionToken: {
-      name: `${useSecureCookies ? '__Secure-' : ''}next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        domain: '.vercel.app',
-        secure: useSecureCookies,
-      },
-    },
-  },
+  secret: SECURE ? (process.env.NEXTAUTH_SECRET as string) : undefined,
+  cookies: cookiesOptions,
 }
