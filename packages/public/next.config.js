@@ -6,17 +6,16 @@ const nextConfig = {
   },
   experimental: { appDir: true },
   typescript: { ignoreBuildErrors: true },
-  /* 
+
   async redirects() {
     return [
       {
-        source: '/:slug',
+        source: '/home',
         destination: '/',
         permanent: true,
       },
     ]
   },
- */
 }
 
 module.exports = nextConfig
@@ -34,10 +33,12 @@ module.exports = phase => {
 
   console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`)
   const env = {
-    DOMAIN: (() => {
-      if (isDev) return 'localhost:3000'
+    NEXT_PUBLIC_DOMAIN: (() => {
+      if (isDev) return 'test.com'
       if (isProd) return 'vercel.app'
     })(),
+    NEXT_DEVELOPMENT_MODE: isDev ? '1' : '0',
+    NEXT_AUTH_SECURE: '1', //isProd ? '1' : '0',
   }
   // next.config.js object
   return { env }
