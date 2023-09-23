@@ -30,7 +30,7 @@ const sameSite = SECURE ? 'none' : 'lax'
 
 const template: TCookieAttributes = {
   httpOnly: true,
-  sameSite: 'none',
+  sameSite: 'lax',
   /* 
   get domain(): string | undefined {
     return this.sameSite !== 'none' ? `${DOMAIN}` : undefined
@@ -51,7 +51,7 @@ const cookiesOptions: TCookies = {
   },
   sessionToken: {
     name: `${SECURE ? '__Secure-' : ''}next-auth.session-token`,
-    options: template,
+    options: { ...template, domain: '.vercel.app' },
   },
 }
 
