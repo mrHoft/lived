@@ -1,15 +1,14 @@
 import { signIn } from 'next-auth/react'
-import { FormEventHandler, useState, useEffect } from 'react'
+import { FormEventHandler, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export default function AuthForm() {
   const router = useRouter()
+  const [err, setErr] = useState<string>('')
   const [userInfo, setUserInfo] = useState({
     email: 'john@email.com',
     password: '1234',
   })
-
-  // TODO: useEffect
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = e => {
     e.preventDefault()
@@ -23,6 +22,7 @@ export default function AuthForm() {
       } else {
         console.log('Email or Password is invalid')
       }
+      if (res && res.error) setErr(res.error)
     })
   }
 
@@ -33,7 +33,7 @@ export default function AuthForm() {
         <input value={userInfo.email} onChange={({ target }) => setUserInfo({ ...userInfo, email: target.value })} type="email" placeholder="john@email.com" />
         <br />
         <input value={userInfo.password} onChange={({ target }) => setUserInfo({ ...userInfo, password: target.value })} type="password" />
-        <br />
+        {err ? <p style={{ color: 'red' }}>{err}</p> : <br />}
         <input type="submit" value="Login" />
       </form>
       <br />

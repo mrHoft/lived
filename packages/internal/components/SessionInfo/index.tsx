@@ -1,6 +1,7 @@
-import { useSession, signOut, getCsrfToken } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useState } from 'react'
 import AuthForm from 'components/AuthForm'
+import logOut from 'pages/api/logOut'
 
 export default function SessionInfo() {
   const [signing, setSignning] = useState(false)
@@ -27,15 +28,7 @@ export default function SessionInfo() {
         Привет <strong>{session.user?.name}</strong>!
       </h3>
       <br />
-      <button onClick={async () => await signOut()}>Sign out</button>
+      <button onClick={logOut}>Sign out</button>
     </>
   )
-}
-
-export async function getServerSideProps(context: any) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
-  }
 }

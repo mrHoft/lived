@@ -1,7 +1,8 @@
-import { useSession, signOut } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import Layout from 'components/layout'
 import { useRouter } from 'next/router'
+import logOut from 'app/api/logOut'
 
 export default function SessionInfo() {
   const router = useRouter()
@@ -16,8 +17,14 @@ export default function SessionInfo() {
 
   return (
     <Layout>
-      <h3>Привет, {session?.user?.name}</h3>
-      <button onClick={async () => await signOut()}>Sign out</button>
+      {status === 'loading' ? (
+        <h3>Loading...</h3>
+      ) : (
+        <>
+          <h3>Привет, {session?.user?.name}</h3>
+          <button onClick={logOut}>Log out</button>
+        </>
+      )}
     </Layout>
   )
 }

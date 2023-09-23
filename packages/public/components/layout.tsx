@@ -1,5 +1,4 @@
 import Header from './Header'
-// import Header from 'lived-auth/components/Header'
 import Footer from './Footer'
 import type { ReactNode } from 'react'
 

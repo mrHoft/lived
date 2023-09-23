@@ -1,5 +1,6 @@
-import { useSession, signOut, getCsrfToken } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import AuthForm from 'components/AuthForm'
+import logOut from 'app/api/logOut'
 
 export default function SessionInfo() {
   const { data: user, data: session, status } = useSession()
@@ -18,16 +19,8 @@ export default function SessionInfo() {
       <p>
         Signed in: <strong>{session.user?.name}</strong> ({session.user?.email})
       </p>
-      <p>{JSON.stringify(user, null, 2)}</p>
-      <button onClick={async () => await signOut()}>Sign out</button>
+      {/* <p>{JSON.stringify(user, null, 2)}</p> */}
+      <button onClick={logOut}>Sign out</button>
     </>
   )
-}
-
-export async function getServerSideProps(context: any) {
-  return {
-    props: {
-      csrfToken: await getCsrfToken(context),
-    },
-  }
 }

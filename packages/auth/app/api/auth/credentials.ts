@@ -3,13 +3,6 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import cookiesOptions from './cookies'
 import { getUser } from '../user/getUser'
 
-const SECURE = process.env.NEXT_AUTH_SECURE === '1'
-
-/* TODO: cookiesOptions must be configurated for NexAuth purpoces
-console.log('secure:', SECURE)
-console.log(cookiesOptions)
-*/
-
 export const authConfig: AuthOptions = {
   session: {
     strategy: 'jwt',
@@ -33,19 +26,19 @@ export const authConfig: AuthOptions = {
           throw new Error('Fields can not be blank')
         }
 
-        const user = await getUser()
+        // Backend api emulation
+        const response = await getUser(email, password)
+          .then(user => {
+            return user
+          })
+          .catch(err => {
+            return err
+          })
 
-        if (email !== user.email || password !== '1234') {
-          throw new Error('Invalid credentials')
-        }
-
-        return user
+        if (response instanceof Error) throw response
+        return response
       },
     }),
   ],
-
-  /* TODO: cookiesOptions must be configurated for NexAuth purpoces
-  secret: SECURE ? (process.env.NEXTAUTH_SECRET as string) : undefined,
   cookies: cookiesOptions,
-*/
 }
