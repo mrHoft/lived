@@ -6,16 +6,17 @@ type TUser = {
 }
 
 export async function getUser(email: string, password: string): Promise<TUser | Error> {
-  const user = (await new Promise((resolve, reject) => {
+  const user = await new Promise<TUser>((resolve, reject) => {
     setTimeout(() => {
-      resolve({
+      const user: TUser = {
         id: '1',
         name: 'John Doe',
         email: 'john@email.com',
         role: 'admin',
-      })
+      }
+      resolve(user)
     }, 1)
-  })) as TUser
+  })
 
   if (!user || email !== user.email || password !== '1234') {
     return new Error('Invalid credentials')
