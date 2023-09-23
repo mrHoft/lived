@@ -1,5 +1,7 @@
-const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN as string
-const SECURE = process.env.NEXT_AUTH_SECURE === '1'
+// const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN as string
+// const SECURE = process.env.NEXT_AUTH_SECURE === '1'
+const SECURE = true
+const DOMAIN = 'auth-lived.vercel.app'
 
 console.log('DOMAIN', DOMAIN, 'SECURE', SECURE)
 
@@ -37,16 +39,14 @@ const template: TCookieAttributes = {
 }
 
 const cookiesOptions: TCookies = {
-  /* 
   callbackUrl: {
     name: `${SECURE ? '__Secure-' : ''}next-auth.callback-url`,
     options: template,
   },
   csrfToken: {
-    name: `${SECURE ? '__Secure-' : ''}next-auth.csrf-token`,
+    name: `${SECURE ? '__Host-' : ''}next-auth.csrf-token`,
     options: template,
   },
- */
   sessionToken: {
     name: `${SECURE ? '__Secure-' : ''}next-auth.session-token`,
     options: template,
