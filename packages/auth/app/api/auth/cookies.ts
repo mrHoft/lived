@@ -39,6 +39,7 @@ const template: TCookieAttributes = {
 }
 
 const cookiesOptions: TCookies = {
+  /* 
   callbackUrl: {
     name: `${SECURE ? '__Secure-' : ''}next-auth.callback-url`,
     options: template,
@@ -51,6 +52,7 @@ const cookiesOptions: TCookies = {
     name: `${SECURE ? '__Secure-' : ''}next-auth.session-token`,
     options: template,
   },
+   */
 }
 
 export default cookiesOptions
