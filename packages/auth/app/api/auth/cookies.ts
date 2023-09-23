@@ -32,7 +32,7 @@ const template: TCookieAttributes = {
   httpOnly: true,
   sameSite: 'lax',
   get domain(): string | undefined {
-    return this.sameSite !== 'none' ? `.${DOMAIN}` : undefined
+    return this.sameSite !== 'none' ? `${DOMAIN}` : undefined
   },
   path: '/',
   secure: SECURE,
