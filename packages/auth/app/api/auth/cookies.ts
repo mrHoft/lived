@@ -31,15 +31,16 @@ const sameSite = SECURE ? 'none' : 'lax'
 const template: TCookieAttributes = {
   httpOnly: true,
   sameSite: 'lax',
+  /* 
   get domain(): string | undefined {
     return this.sameSite !== 'none' ? `${DOMAIN}` : undefined
   },
+ */
   path: '/',
   secure: SECURE,
 }
 
 const cookiesOptions: TCookies = {
-  /* 
   callbackUrl: {
     name: `${SECURE ? '__Secure-' : ''}next-auth.callback-url`,
     options: template,
@@ -52,7 +53,6 @@ const cookiesOptions: TCookies = {
     name: `${SECURE ? '__Secure-' : ''}next-auth.session-token`,
     options: template,
   },
-   */
 }
 
 export default cookiesOptions
