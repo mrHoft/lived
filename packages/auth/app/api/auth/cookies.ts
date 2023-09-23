@@ -30,7 +30,7 @@ const sameSite = SECURE ? 'none' : 'lax'
 
 const template: TCookieAttributes = {
   httpOnly: true,
-  sameSite: 'lax',
+  sameSite: 'none',
   /* 
   get domain(): string | undefined {
     return this.sameSite !== 'none' ? `${DOMAIN}` : undefined
