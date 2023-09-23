@@ -1,7 +1,5 @@
-// const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN as string
-// const SECURE = process.env.NEXT_AUTH_SECURE === '1'
-const SECURE = true
-const DOMAIN = 'auth-lived.vercel.app'
+const DOMAIN = process.env.NEXT_PUBLIC_DOMAIN as string
+const SECURE = process.env.NEXT_AUTH_SECURE === '1'
 
 console.log('DOMAIN', DOMAIN, 'SECURE', SECURE)
 
@@ -31,7 +29,7 @@ const sameSite = SECURE ? 'none' : 'lax'
 const template: TCookieAttributes = {
   httpOnly: true,
   sameSite: 'lax',
-  /* 
+  /* Unsupported by nex-auth
   get domain(): string | undefined {
     return this.sameSite !== 'none' ? `${DOMAIN}` : undefined
   },
@@ -51,7 +49,7 @@ const cookiesOptions: TCookies = {
   },
   sessionToken: {
     name: `${SECURE ? '__Secure-' : ''}next-auth.session-token`,
-    options: { ...template, domain: '.vercel.app' },
+    options: { ...template /* domain: '.vercel.app' */ },
   },
 }
 
