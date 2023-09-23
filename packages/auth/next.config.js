@@ -41,7 +41,7 @@ module.exports = phase => {
       if (isProd) return 'vercel.app'
     })(),
     NEXT_DEVELOPMENT_MODE: isDev ? '1' : '0',
-    NEXT_AUTH_SECURE: '0', //isProd ? '1' : '0',
+    NEXT_AUTH_SECURE: isProd ? '1' : '0',
   }
 
   return { env }
