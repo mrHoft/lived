@@ -3,6 +3,8 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import cookiesOptions from './cookies'
 import { getUser } from '../user/getUser'
 
+const SECURE = process.env.NEXT_AUTH_SECURE === '1'
+
 export const authConfig: AuthOptions = {
   session: {
     strategy: 'jwt',
@@ -40,5 +42,6 @@ export const authConfig: AuthOptions = {
       },
     }),
   ],
+  secret: SECURE ? (process.env.NEXTAUTH_SECRET as string) : undefined,
   cookies: cookiesOptions,
 }
