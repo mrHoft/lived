@@ -1,5 +1,7 @@
 # Прожито Development App
 
+Deployed example: [auth-lived.vercel.app](https://auth-lived.vercel.app/). Contains links to the rest subdomains. Login form already filled by auth details for a comfortable testings.
+
 ### Стек:
 
 - TypeScript
